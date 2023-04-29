@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{%block main%}
+
+{%block titulo%}
+    <title>EmprendeForo | Borrar publicación</title>
+{%endblock%}
+<section>
+    <div class="expansor">
+        <div class="grid_container">
+            <div class="form_crear delete">
+                <form action="" method="POST">{% csrf_token %}
+                    <h2>¿Desea borrar "{{publicacion.nombre}}"?</h2>
+                    <button tpye="submit" class="boton">Borrar</button>
+                </form>
+            </div>
+        </div>
+    </div>   
+</section>
+    
+{%endblock%}

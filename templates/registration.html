@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{%block titulo%}
+    <title>EmprendeForo | Registro</title>
+{%endblock%}
+{%block main%}
+<h1>Registrate</h1>
+<section>
+    <div class='expansor'>
+        <div class="grid_container">
+            <div class="form_crear">
+                <form action="" method="POST">{% csrf_token %}
+                    {{form_registration.as_p}}
+                    <button type="submit" class="boton">Registrarte</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+    
+{%endblock%}

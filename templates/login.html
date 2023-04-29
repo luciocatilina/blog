@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+
+{%block titulo%}
+    <title>EmprendeForo | Iniciar sesión</title>
+{%endblock%}
+{%block main%}
+<h1>Inicia sesión</h1>
+<section>
+    <div class='expansor'>
+        <div class='grid_container'>
+            <div class="form_crear">
+                <form action="" method="POST"> {% csrf_token %}
+                    {{form_login.as_p}}
+                    <button type="submit" class='boton'>Iniciar Sesion</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}

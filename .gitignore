@@ -1,0 +1,7 @@
+/AppBlog/__pycache__
+/blog/__pycache__
+/static/node_modules
+/static/scss
+/statc/package-lock.json
+/static/package.json
+/usuarios/__pycache__

@@ -1,0 +1,46 @@
+{% extends 'AppBlog/base.html' %}
+{%block titulo%}
+    <title>EmprendeForo</title>
+    <meta name="description"
+    content="Conecta con otros emprendedores y empieza tu negocio. Encuentra socios, recursos y oportunidades de colaboración.">
+{%endblock%}
+
+{%block main%}
+<h1>{{publicacion.nombre}}</h1>
+<section>
+    <div class='grid_container'>
+        <div class="publicacion_container blog">
+            <div class="publicacion_detalle">
+                <div class="publicacion_detalle__autor_fecha">
+                    <h4>{{publicacion.usuario}}:</h4>
+                    <h5>{{publicacion.fecha_creacion}}</h4>
+                </div>
+                <p>{{publicacion.texto}}</p>
+                <hr>
+            </div>
+            <div class="respuestas">
+                <h2>Respuestas:</h2>
+                <hr>
+                {%if not publicacion.comentarios.all%}
+                <p>No hay comentarios todavía... <a href="{%url 'crear_comentario' publicacion.pk %}">Comentar</a></p>
+                {%else%}
+                    {%for comentario in publicacion.comentarios.all%}
+                    <div>
+                        <div class="publicacion_detalle__autor_fecha">
+                            <h5>{{comentario.usuario}}:</h5>
+                            <h6>{{comentario.fecha_creacion}}</h6>
+                        </div>
+                        <p>{{comentario.texto}}</p>
+                        <hr>
+                        
+                    </div>
+                    {%endfor%}
+                    <form action="{%url 'crear_comentario' publicacion.pk%}">
+                        <button type="submit" class="boton">Agregar comentario</button>
+                    </form>
+                {%endif%}
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}

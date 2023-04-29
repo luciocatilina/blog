@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{%block titulo%}
+    <title>EmprendeForo | Crear publicación</title>
+    <meta name="description" content="En nuestra sección de creación de publicaciones, podrás presentar tus proyectos, buscar colaboradores y oportunidades de inversión.">
+{%endblock%}
+
+{%block main%}
+<h1>Crea una publicación</h1>
+<section>
+    <div class="grid_container">
+        <div class="form_crear">
+            <form action="" method="POST" id="form_crear_publicacion"> {% csrf_token %}
+                {{form.as_p}}
+                
+                <button type="submit" class="boton" id="btn_crear_pub">Crear</button>
+            </form>
+        </div>
+    </div>
+</section>
+{%endblock%}

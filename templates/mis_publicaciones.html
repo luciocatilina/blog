@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+
+
+{%block titulo%}
+    <title>EmprendeForo | Mis publicaciones</title>
+    <meta name="description" content="Únete a nuestra plataforma de networking empresarial y comparte tus ideas y conocimientos con otros emprendedores en busca de oportunidades de crecimiento. En nuestra sección de publicaciones, podrás mostrar tus proyectos y avances, encontrar colaboradores y buscar oportunidades de inversión.">
+{%endblock%}
+{%block main%}
+<h1>Mis publicaciones</h1>
+
+<section>
+    <div class="expansor">
+        <div class="grid_container">
+            <div class="publicacion_container">
+                {% if object_list%}
+                    {%for publicacion in object_list%}
+                    <div class="publicacion">
+                        <div class="info">
+                            <h4>{{publicacion.nombre}}</h4>
+                            <h5>{{publicacion.fecha_creacion}}</h5>
+                        </div>
+                        <div class="div_boton">
+                            <form action="{%url 'crear_comentario' publicacion.pk%}">
+                                <button class="boton"><i class="fa-regular fa-eye fa-2x"></i></button>
+                            </form>
+                            <form action="{%url 'borrar_publicacion' publicacion.id%}">
+                                <button class="boton"><i class="fa-solid fa-trash fa-2x"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    {%endfor%}
+                {%else%}
+                    <div class="no_publicacion">
+                        <h4>Todavía no agregaste ninguna publicación</h4>
+                        <form action="{%url 'crear_publicacion'%}">
+                            <button class="boton">Agregar</button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+{%endblock%}

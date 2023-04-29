@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{%block titulo%}
+    <title>EmprendeForo | Ayuda</title>
+{%endblock%}
+{%block main%}
+<h1>Ayuda</h1>
+<section>
+    <div class="grid_container">
+        <div class="ayuda_container">
+            <div class="txt">
+                <h2>
+                    Hola! Entraste a la página de ayuda. No contamos con robots pero si con personal humano que puede atender tu
+                    problema! Por favor envíanos tu queja o problema al siguiente mail a:
+                    <strong> soporteemprendedoor@gmail.com</strong>
+                </h2>
+            </div>
+            <div class="form_crear">
+                <form action="" method="POST"> {% csrf_token %}
+                    {{form.as_p}}
+        
+                    <button type="submit" class="boton">Enviar</button>
+                </form>
+            </div>
+        </div>
+        
+        
+    </div>
+</section>
+{%endblock%}

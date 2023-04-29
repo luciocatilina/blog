@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{%block titulo%}
+    <title>EmprendeForo | Comentar</title>
+    <meta name="description" content="En nuestra sección de creación de publicaciones, podrás presentar tus proyectos, buscar colaboradores y oportunidades de inversión.">
+{%endblock%}
+{%block main%}
+{%for publicacion in publicacion%}
+<h1>{{publicacion.nombre}}</h1>
+<section>
+    <div class="grid_container">
+        <div class="publicacion_container blog">
+            <div class="publicacion_detalle">
+                <div class="publicacion_detalle__autor_fecha">
+                    <h4>{{publicacion.usuario}}:</h4>
+                    <h5>{{publicacion.fecha_creacion}}</h4>
+                </div>
+                <p>{{publicacion.texto}}</p>
+                <hr>
+            </div>
+            <div class="respuestas">
+                <h2>Respuestas:</h2>
+                <div class="form_crear txt-area">
+                    <form action="" method="POST"> {% csrf_token %}
+                        {{form.as_p}}
+                        
+                        <button type="submit" class="boton">Responder</button>
+                    </form>
+                </div>
+                {%if not comentarios.all%}
+                <p>No hay comentarios todavía...</p>
+                {%else%}
+                    {%for comentario in comentarios.all%}
+                    <div>
+                        <div class="publicacion_detalle__autor_fecha">
+                            <h5>{{comentario.usuario}}:</h5>
+                            <h6>{{comentario.fecha_creacion}}</h6>
+                        </div>
+                        <p>{{comentario.texto}}</p>
+                        <hr>
+                    </div>
+                    {%endfor%}
+                {%endif%}
+            </div>
+{%endfor%}
+    </div>  
+</section>
+{%endblock%}
