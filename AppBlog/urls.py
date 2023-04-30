@@ -12,6 +12,7 @@ urlpatterns = [
     path('publicacion/<int:pk>/', Crear_comentario.as_view(), name='crear_comentario'),
     path('mis_publicaciones/', Mis_publicaciones.as_view(), name='mis_publicaciones'),
     path('ayuda', contacto, name='ayuda'),
+    path('borrar_pub/<int:pub_id>', borrar_pub, name='borrar_pub'),
 #    path('donaciones', donaciones, name='donaciones'),
 
 ]

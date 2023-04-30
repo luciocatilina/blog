@@ -91,6 +91,13 @@ class Mis_publicaciones(LoginRequiredMixin, ListView):
         return queryset.filter(usuario=self.request.user).order_by('-pk')
 
 
+def borrar_pub(request, pub_id):
+    publicacion_a_borrar = Publicacion.objects.get(pk = pub_id)
+    publicacion_a_borrar.delete()
+
+    return redirect('mis_publicaciones')
+
+
 class Borrar_publicacion(LoginRequiredMixin, DeleteView):
 
     model = Publicacion

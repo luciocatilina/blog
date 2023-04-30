@@ -181,6 +181,20 @@ footer {
     .pagination ul li {
       margin: 0 20px; } }
 
+/*warning*/
+.swal2-icon-content {
+  color: red; }
+
+.swal2-icon.swal2-warning {
+  border-color: red !important; }
+
+.swal2-styled.swal2-confirm {
+  background-color: #32aa32 !important; }
+
+.swal2-popup {
+  background-color: #dedfc5 !important;
+  color: black; }
+
 /*layout*/
 .titulo_seccion_ultimas_pub {
   text-align: center; }
