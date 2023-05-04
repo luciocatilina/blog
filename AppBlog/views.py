@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from .forms import *
 from .models import *
+from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
+from django.http import JsonResponse
 
 
 
@@ -17,6 +19,36 @@ class Publicaciones(ListView):
 
     def get_queryset(self):
         return Publicacion.objects.all().order_by('-pk')
+
+def get_publicaciones(request):
+
+    publicaciones = list(Publicacion.objects.values())
+    
+    for i in range(len(publicaciones)):
+        usuario = str(User.objects.get(pk = publicaciones[i]['usuario_id']))
+        publicaciones[i]['usuario_id'] = usuario
+
+    if (len(publicaciones)>0):
+        data={'message': 'Success', 'publicaciones': publicaciones}
+    
+    else:
+        data={'message': 'Not Found'}
+
+    return JsonResponse(data, safe=False)
+
+def get_comentarios(request, pub_id):
+    comentarios = list(Comentario.objects.filter(comentario_id = pub_id).values())
+
+    if (len(comentarios)>0):
+        data = {'message': 'Success', 'comentarios': comentarios}
+    else:
+        data = {'message': 'Not Found'}
+
+    return JsonResponse(data)
+
+def todas_publicaciones(request):
+
+    return render(request, 'publicaciones_v2.html')
 
 '''
 class Detalle_publicacion(DetailView):

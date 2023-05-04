@@ -279,6 +279,40 @@ footer {
     display: flex;
     justify-content: center; }
 
+.ocultar {
+  display: none !important; }
+
+.mostrar {
+  display: flex !important; }
+
+.buscador {
+  min-width: 290px;
+  max-width: 500px;
+  margin-bottom: 40px;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15px 0 15px; }
+  .buscador p {
+    margin: 0;
+    color: #3d423c;
+    font-size: 20px; }
+  .buscador input {
+    width: 100%;
+    /* outline-color: $quinary; */
+    height: 40px;
+    font-size: 25px;
+    background-color: #dedfc5;
+    border: 0.5px solid #3d423c; }
+    .buscador input:focus-visible {
+      outline: none; }
+    .buscador input:focus {
+      border-bottom: 2px solid #3d423c;
+      border-left: 2px solid #3d423c;
+      background-color: #c8c9b5; }
+
 @media screen and (max-width: 1023px) {
   .publicacion_container .publicacion .info h4 {
     font-size: 2rem; }
