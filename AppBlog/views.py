@@ -15,7 +15,7 @@ class Publicaciones(ListView):
 
     model = Publicacion
     template_name = 'todas_publicaciones.html'
-    paginate_by = 8
+    paginate_by = 5
 
     def get_queryset(self):
         return Publicacion.objects.all().order_by('-pk')
@@ -34,7 +34,7 @@ def get_publicaciones(request):
     else:
         data={'message': 'Not Found'}
 
-    return JsonResponse(data, safe=False)
+    return JsonResponse(data)
 
 def get_comentarios(request, pub_id):
     comentarios = list(Comentario.objects.filter(comentario_id = pub_id).values())
