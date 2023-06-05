@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy
 
 class Formulario_registro(UserCreationForm):
 
-    username=forms.CharField(label='Usuario', min_length=5, max_length=150)
+    username=forms.CharField(label='Usuario', min_length=5, max_length=10)
     password1=forms.CharField(widget=forms.PasswordInput, label='Contraseña')
     password2=forms.CharField(widget=forms.PasswordInput, label='Confirme la Contraseña')
 

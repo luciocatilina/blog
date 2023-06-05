@@ -15,11 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('AppBlog.urls')),
-    path('emprendeforo/', include('AppBlog.urls')),
-    path('emprendeforo/', include('usuarios.urls')),
-
+    path('', include('usuarios.urls')),
+    path('', include('blogapi.urls')),
+    path('', include('favoritos.urls')),
+    path('', include('contacto.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+# Añadir la configuración para los archivos estáticos en el entorno de desarrollo
+#urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

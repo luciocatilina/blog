@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block titulo%}
+    <title>EmprendeForo | Favoritos</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+{%endblock%}
+
+{%block main%}
+<section>
+    <h1>Favoritos</h1>
+
+    <div class="grid_container">
+        <div class="publicacion_container" id='publicacion_container_favoritos'>
+            
+        </div>
+    </div>
+</section>
+
+
+{%endblock%}
+
+{%block script%}
+    <script src="{%static 'js/favoritos.js'%}"></script>
+    <script src="{%static 'js/envio_fav.js'%}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="{%static 'js/listar_favoritos.js'%}"></script>
+{%endblock%}

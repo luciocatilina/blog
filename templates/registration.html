@@ -7,16 +7,15 @@
 {%block main%}
 <h1>Registrate</h1>
 <section>
-    <div class='expansor'>
-        <div class="grid_container">
-            <div class="form_crear">
-                <form action="" method="POST">{% csrf_token %}
-                    {{form_registration.as_p}}
-                    <button type="submit" class="boton">Registrarte</button>
-                </form>
-            </div>
+        <div class="grid_form_user">
+            <form action="" method="POST" class="form_user">{% csrf_token %}
+                {{form_registration.as_p}}
+                <button type="submit" class="boton">Registrarte</button>
+            </form>
         </div>
-    </div>
+        <div class="registro_log">
+            <p>¿Ya tienes una cuenta? <a href="{%url 'login'%}"><span>Ingresa</span></a></p>
+        </div>
 </section>
     
 {%endblock%}

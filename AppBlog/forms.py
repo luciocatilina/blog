@@ -6,12 +6,6 @@ from django import forms
 from .models import *
 
 
-class FormularioContacto(forms.Form):
-
-    asunto=forms.CharField()
-    email=forms.EmailField()
-    mensaje=forms.CharField(widget=forms.Textarea())
-
 class FormularioComentario(forms.Form):
 
 
