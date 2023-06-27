@@ -3,6 +3,7 @@ form_crear_publicacion.addEventListener('submit', function (e) {
 
     const formData = new FormData(this);
 
+
     fetch(this.action, {
         method : 'POST',
         headers : {
@@ -14,8 +15,10 @@ form_crear_publicacion.addEventListener('submit', function (e) {
     .then(response => {
         if(response.ok) {
             return response.json
+            
         }else {
             throw new Error('Error: ' + response.status)
+            
         }
     })
 

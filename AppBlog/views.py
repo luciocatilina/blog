@@ -75,6 +75,8 @@ class Crear_publicacion(LoginRequiredMixin, CreateView):
         obj.save()
         return redirect('inicio')
     
+    
+    
 
 ############################################
 ################## PUBLICACION DETALLE #####

@@ -31,13 +31,19 @@ const renderPublicaciones = (lista, fragmento, publicacion_container) => {
     publicacion_container.appendChild(fragmento)
 
     lista.forEach(p => {
-        if (lista_data_fav_id.includes(p.id)) {
-            btn_fav = document.getElementById(`btn_fav_${p.id}`)
-            btn_fav.classList.add('fa-solid')
-            btn_fav.classList.remove('fa-regular')
+        try {
+            if (lista_data_fav_id.includes(p.id)) {
+                btn_fav = document.getElementById(`btn_fav_${p.id}`)
+                btn_fav.classList.add('fa-solid')
+                btn_fav.classList.remove('fa-regular')
+            }
+            favoritos(p.id)
+        }catch {
+
         }
+        
         //funcion favoritos
-        favoritos(p.id)
+        
     })
     //<i class="fa-regular fa-star fa-2x" id="fav"></i>
 }

@@ -4,6 +4,7 @@ import json
 from .models import Favoritos
 from AppBlog.models import Publicacion
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -82,7 +83,7 @@ def favoritos(request):
 
     return render(request, 'favoritos.html', context)'''
 
-
+@login_required
 def listado_favoritos_json(request):
 
     if request.user.is_authenticated:
@@ -104,7 +105,7 @@ def listado_favoritos_json(request):
 
         return JsonResponse(data)
 
-
+@login_required
 def listar_favoritos(request):
 
     return render(request, 'favoritos.html')

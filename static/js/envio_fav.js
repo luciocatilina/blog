@@ -25,7 +25,11 @@ let listFavPub
 listFavPub = JSON.parse(localStorage.getItem('favs') || '[]') || []
 
 if (listFavPub.length > 0) {
-    enviarfavLocalStorage(listFavPub)
+    try {
+        enviarfavLocalStorage(listFavPub)
+    }catch (e){
+        //console.log(e)
+    }
 } 
 
 

@@ -28,11 +28,19 @@ const ultimas_publicaciones= async() => {
 
                 publicacion.addEventListener('click', function() {agregarEventoPublicacion(p.id)} )
                 favoritos(p.id)
-                if(lista_data_fav_id.includes(p.id)) {
-                    btn_fav = document.getElementById(`btn_fav_${p.id}`)
-                    btn_fav.classList.add('fa-solid')
-                    btn_fav.classList.remove('fa-regular')
+                try{
+                    if(lista_data_fav_id.includes(p.id)) {
+                        btn_fav = document.getElementById(`btn_fav_${p.id}`)
+                        btn_fav.classList.add('fa-solid')
+                        btn_fav.classList.remove('fa-regular')
+                    }
+                }catch {
+                    
                 }
+                
+                
+                    
+                
 
             });
 
