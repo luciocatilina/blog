@@ -45,6 +45,10 @@ INSTALLED_APPS = [
     #mis apps
     'AppBlog',
     'usuarios',
+    'donaciones',
+
+    #terceros
+    'sslserver',
 ]
 
 MIDDLEWARE = [

@@ -1,10 +1,22 @@
 {%extends 'base.html'%}
-{%load static%}
 
 {%block titulo%}
     <title>EmprendeForo | Donaciones</title>
 {%endblock%}
-{%block main%}
 <h1>Donaciones</h1>
-<h2 class="prox">PRÓXIMAMENTE</h2>
+
+<div id="wallet_container">comprar</div>
+{%block script%}
+    <!--SDK MercadoPago.js--> 
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script>
+        const mp = new MercadoPago('YOUR_PUBLIC_KEY');
+        const bricksBuilder = mp.bricks();
+        mp.bricks().create("wallet", "wallet_container", {
+        initialization: {
+            preferenceId: "<PREFERENCE_ID>",
+            },
+        });
+    </script>
+    
 {%endblock%}
