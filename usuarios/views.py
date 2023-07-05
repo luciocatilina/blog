@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import *
+from .models import Perfil
 
 # Create your views here.
 
@@ -57,6 +58,6 @@ def registration(request):
 class MyAuthForm(AuthenticationForm):
     error_messages = {
         'invalid_login': gettext_lazy(
-            'Usuario y/o contraseña incorrectos'
+            'Usuario y/o contraseña incorrecto/s'
         )
     }

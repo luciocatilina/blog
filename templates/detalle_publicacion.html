@@ -1,14 +1,16 @@
-{% extends 'AppBlog/base.html' %}
-{%block titulo%}
-    <title>EmprendeForo</title>
-    <meta name="description"
-    content="Conecta con otros emprendedores y empieza tu negocio. Encuentra socios, recursos y oportunidades de colaboración.">
-{%endblock%}
+{% extends 'base.html' %}
 
+{%load static%}
+{%block titulo%}
+    <title>EmprendeForo | Comentar</title>
+    <meta name="description" content="En nuestra sección de creación de publicaciones, podrás presentar tus proyectos, buscar colaboradores y oportunidades de inversión.">
+    <link rel="stylesheet" href="{% static 'ckeditor/ckeditor.css' %}">
+{%endblock%}
 {%block main%}
-<h1>{{publicacion.nombre}}</h1>
+{%for publicacion in publicacion%}
+<h1 class='h1_pub_detalle'>{{publicacion.nombre}}</h1>
 <section>
-    <div class='grid_container'>
+    <div class="grid_container">
         <div class="publicacion_container blog">
             <div class="publicacion_detalle">
                 <div class="publicacion_detalle__autor_fecha">
@@ -20,11 +22,17 @@
             </div>
             <div class="respuestas">
                 <h2>Respuestas:</h2>
-                <hr>
-                {%if not publicacion.comentarios.all%}
-                <p>No hay comentarios todavía... <a href="{%url 'crear_comentario' publicacion.pk %}">Comentar</a></p>
+                <div class="form_crear txt-area">
+                    <form action="" method="POST"> {% csrf_token %}
+                        {{form.as_p}}
+                        
+                        <button type="submit" class="boton">Responder</button>
+                    </form>
+                </div>
+                {%if not comentarios%}
+                <p>No hay comentarios todavía...</p>
                 {%else%}
-                    {%for comentario in publicacion.comentarios.all%}
+                    {%for comentario in comentarios%}
                     <div>
                         <div class="publicacion_detalle__autor_fecha">
                             <h5>{{comentario.usuario}}:</h5>
@@ -32,15 +40,16 @@
                         </div>
                         <p>{{comentario.texto}}</p>
                         <hr>
-                        
                     </div>
                     {%endfor%}
-                    <form action="{%url 'crear_comentario' publicacion.pk%}">
-                        <button type="submit" class="boton">Agregar comentario</button>
-                    </form>
                 {%endif%}
             </div>
-        </div>
-    </div>
+{%endfor%}
+    </div>  
 </section>
+{%endblock%}
+
+{%block script%}
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 {%endblock%}

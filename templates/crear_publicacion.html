@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{%load static%}
 {%block titulo%}
     <title>EmprendeForo | Crear publicación</title>
     <meta name="description" content="En nuestra sección de creación de publicaciones, podrás presentar tus proyectos, buscar colaboradores y oportunidades de inversión.">
@@ -10,11 +11,21 @@
     <div class="grid_container">
         <div class="form_crear">
             <form action="" method="POST" id="form_crear_publicacion"> {% csrf_token %}
+                {{form.media}}
                 {{form.as_p}}
-                
+
                 <button type="submit" class="boton" id="btn_crear_pub">Crear</button>
             </form>
         </div>
     </div>
 </section>
+{%endblock%}
+
+{%block script%}
+    <!--sweet alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="{%static 'js/crear_publicacion.js'%}"></script>
+    
+    
 {%endblock%}

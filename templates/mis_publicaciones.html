@@ -15,15 +15,17 @@
             <div class="publicacion_container">
                 {% if object_list%}
                     {%for publicacion in object_list%}
-                    <div class="publicacion">
-                        <div class="info">
-                            <h4>{{publicacion.nombre}}</h4>
-                            <h5>{{publicacion.fecha_creacion}}</h5>
+                    <div class="publicacion grid_mi_pub">
+                        <h4 class="mi_pub_titulo">{{publicacion.nombre}}</h4>
+                        <div class="mi_div_fecha">
+                            <h5 class="mi_pub_fecha">{{publicacion.fecha_creacion}}</h5>
                         </div>
-                        <div class="div_boton">
+                        <div class="div_boton btn1">
                             <form action="{%url 'crear_comentario' publicacion.pk%}">
                                 <button class="boton"><i class="fa-regular fa-eye fa-2x"></i></button>
                             </form>
+                        </div>
+                        <div class="div_boton btn2">
                             <button class="boton btn_delete_pub" type="submit" value='{ "nombre": "{{publicacion.nombre}}", "id": "{{publicacion.pk}}", "url": "{% url "borrar_pub" publicacion.pk %}" }'><i class="fa-solid fa-trash fa-2x"></i></button>
                         </div>
                     </div>

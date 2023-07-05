@@ -1,24 +1,38 @@
 {% extends 'base.html' %}
+
+{%load static%}
 {%block titulo%}
     <title>EmprendeForo | Comentar</title>
     <meta name="description" content="En nuestra sección de creación de publicaciones, podrás presentar tus proyectos, buscar colaboradores y oportunidades de inversión.">
 {%endblock%}
 {%block main%}
 {%for publicacion in publicacion%}
-<h1>{{publicacion.nombre}}</h1>
+<div class="grid_container">
+    <h1 class='h1_pub_detalle'>{{publicacion.nombre}}</h1>
+</div>
 <section>
     <div class="grid_container">
         <div class="publicacion_container blog">
             <div class="publicacion_detalle">
                 <div class="publicacion_detalle__autor_fecha">
-                    <h4>{{publicacion.usuario}}:</h4>
+                    <div class="avatar-usr">
+                        {%if publicacion.usuario.img_perfil%}
+                        <img class= 'img_avatar' src="{{publicacion.usuario.img_perfil.url}}" alt="emprendeforo_avatar_{{publicacion.usuario}}">
+                        {%else%}
+                        <img class= 'img_avatar' src="/media/avatares/profile_default.webp" alt="emprendeforo_avatar_default">
+                        {%endif%}
+                        <h4>{{publicacion.usuario}}:</h4>
+                    </div>
                     <h5>{{publicacion.fecha_creacion}}</h4>
                 </div>
-                <p>{{publicacion.texto}}</p>
+                <hr>
+                <div class="publicacion-main-text">
+                    <p>{{publicacion.texto}}</p>
+                </div>
                 <hr>
             </div>
             <div class="respuestas">
-                <h2>Respuestas:</h2>
+                <h2>Comentarios:</h2>
                 <div class="form_crear txt-area">
                     <form action="" method="POST"> {% csrf_token %}
                         {{form.as_p}}
@@ -26,10 +40,10 @@
                         <button type="submit" class="boton">Responder</button>
                     </form>
                 </div>
-                {%if not comentarios.all%}
+                {%if not comentarios%}
                 <p>No hay comentarios todavía...</p>
                 {%else%}
-                    {%for comentario in comentarios.all%}
+                    {%for comentario in comentarios%}
                     <div>
                         <div class="publicacion_detalle__autor_fecha">
                             <h5>{{comentario.usuario}}:</h5>

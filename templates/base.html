@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {%load static%}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {%block titulo%}
-    
+
     {%endblock%}
     <!--BS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,49 +18,104 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-    <!--css sweet alert-->
-    <link rel="stylesheet" href="sweetalert2.min.css">
     <!--CSS-->
     <link rel="stylesheet" href="{% static 'css\style.css' %}">
+    <!--destildar botones favoritos-->
+    <script src="{%static 'js/destildar_botones_fav.js'%}"></script>
 </head>
 
 <body>
     <header>
         <div class="navbar-users-help">
             <ul>
-                    <li>
-                        <a class="nav-link nav_boton" href="{%url 'ayuda'%}">Ayuda</a>
-                    </li>
+                <li>
+                    <a class="nav-link nav_boton" href="{%url 'ayuda'%}">Ayuda</a>
+                </li>
                 {%if request.user.is_authenticated %}
-                    <li>
-                        <p class="nav-link nav_boton">Hola, {{user.username}}</p>
-                    </li>
-                    <li>
-                        <a class="nav-link nav_boton" href="{%url 'logout'%}">Cerrar sesión</a>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a class="nav-link nav_boton" href="{%url 'login'%}">Iniciar sesión</a>
-                    </li>
-                    <li>
-                        <a class="nav-link nav_boton" href="{%url 'registration'%}">Registro</a>
-                    </li>
-                {%endif%} 
+                <li>
+                    <p class="nav-link nav_boton">Hola, {{user.username}}</p>
+                </li>
+                <li>
+                    <a class="nav-link nav_boton" href="{%url 'logout'%}" id="logoutBtn">Cerrar sesión</a>
+                </li>
+                <script>
+                    logoutBtn.addEventListener('click', function (e) {
+                        e.preventDefault()
+                        localStorage.clear();
+                        destildarBotonesFav()
+                        location.href = window.location.hostname + '/cerrar_sesion'
+                    })
+                </script>
+                {% else %}
+                <li>
+                    <a class="nav-link nav_boton" href="{%url 'login'%}">Iniciar sesión</a>
+                </li>
+                <li>
+                    <a class="nav-link nav_boton" href="{%url 'registration'%}">Registro</a>
+                </li>
+                {%endif%}
             </ul>
         </div>
         <div class="navbar-titulo-container">
             <h2 class="emprendeforo_chico">
-                <a href="{%url 'inicio'%}">EmprendeForo</a>    
+                <a href="{%url 'inicio'%}">EmprendeForo</a>
             </h2>
         </div>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand nav_boton navbar-titulo" href="{%url 'inicio'%}">EmprendeForo</a>
-                <button class="navbar-toggler boton_nav" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <a class="navbar-brand nav_boton navbar-titulo btn__nav_usr" href="/">EmprendeForo</a>
+                <div class="d-flex">
+                  <button class="navbar-toggler boton_nav collapsed me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdownUser" aria-controls="navbarNavDropdownUser" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-regular fa-user"></i>
+                  </button>
+                  <button class="navbar-toggler boton_nav collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                  </button>
+                </div>
+        
+                <!--DROP DOWN USUARIO-->
+                <div class="collapse navbar-collapse" id="navbarNavDropdownUser">
+                    <ul class="navbar-nav me-auto text-center ul-users">
+                        {%if request.user.is_authenticated %}
+                        <li class="nav-item justify-content-center">
+                            <p class="nav-link nav_boton">Hola, {{user.username}}</p>
+                        </li>
+                        <li class="nav-item justify-content-center">
+                            <a class="nav-link nav_boton" href="{%url 'crear_publicacion'%}">Crear publicación</a>
+                        </li>
+                        <li class="nav-item justify-content-center">
+                            <a class="nav-link nav_boton" href="{%url 'mis_publicaciones'%}">Mis publicaciones</a>
+                        </li>
+                        <li class="nav-item justify-content-center">
+                            <a class="nav-link nav_boton" href="{%url 'favoritos'%}">Favoritos</a>
+                        </li>
+                        <li class="nav-item justify-content-center">
+                            <a class="nav-link nav_boton" href="{%url 'logout'%}" id="logoutBtn">Cerrar sesión</a>
+                        </li>
+                        <script>
+                            
+                            logoutBtn.addEventListener('click', function (e) {
+                                e.preventDefault()
+                                localStorage.clear();
+                                destildarBotonesFav();
+                                location.href = '/cerrar_sesion'
+                            })
+                        </script>
+                        {% else %}
+                        <li class="nav-item justify-content-center">
+                            <a class="nav-link nav_boton" href="{%url 'crear_publicacion'%}">Crear publicación</a>
+                        </li>
+                        <li class="nav-item justify-content-center">
+                            <a class="nav-link nav_boton" href="{%url 'login'%}">Iniciar sesión</a>
+                        </li>
+                        <li class="nav-item justify-content-center">
+                            <a class="nav-link nav_boton" href="{%url 'registration'%}">Registro</a>
+                        </li>
+                        {%endif%}
+                    </ul>
+                </div>
+                
+                <!--DROP DOWN HAMBURGUESA-->
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav me-auto ms-auto">
                         <li class="nav-item justify-content-center">
@@ -68,40 +124,17 @@
                         <li class="nav-item justify-content-center">
                             <a class="nav-link nav_boton" href="{%url 'crear_publicacion'%}">Crear publicación</a>
                         </li>
-                        {%if request.user.is_authenticated%}
                         <li class="nav-item justify-content-center">
-                            <a class="nav-link nav_boton" href="{%url 'mis_publicaciones'%}">Mis publicaciones</a>
-                        </li>
-                        {%endif%}
-                        <li class="nav-item justify-content-center">
-                            <a class="nav-link nav_boton" href="#">Busco socio</a>
-                        </li>
-                        <li class="nav-item justify-content-center">
-                            <a class="nav-link nav_boton" href="#">Alguien que sepa</a>
+                            <a class="nav-link nav_boton" href="{%url 'favoritos'%}">Favoritos</a>
                         </li>
                         <li class="nav-item justify-content-center ul-users">
                             <a class="nav-link nav_boton" href="{%url 'ayuda'%}">Ayuda</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ms-auto text-center ul-users">
-                        {%if request.user.is_authenticated %}
-                        <li class="nav-item justify-content-center">
-                            <p class="nav-link nav_boton">Hola, {{user.username}}</p>
-                        </li>
-                        <li class="nav-item justify-content-center">
-                            <a class="nav-link nav_boton" href="{%url 'logout'%}">Cerrar sesión</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item justify-content-center">
-                            <a class="nav-link nav_boton" href="{%url 'login'%}">Iniciar sesión</a>
-                        </li>
-                        <li class="nav-item justify-content-center">
-                            <a class="nav-link nav_boton" href="{%url 'registration'%}">Registro</a>
-                        </li>
-                        {%endif%} 
-                    </ul>                    
+                    
                 </div>
             </div>
+
         </nav>
     </header>
     <main>
@@ -113,9 +146,27 @@
     </footer>
     <!--JS-BS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous">
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+        </script>
+    <!--BTN NAV -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var navbarTogglers = document.querySelectorAll('.navbar-toggler');
+            var navbarNavDropdownUser = document.getElementById('navbarNavDropdownUser');
+            var navbarNavDropdown = document.getElementById('navbarNavDropdown');
+            
+            function hideNavbarSections() {
+                navbarNavDropdownUser.classList.remove('show');
+                navbarNavDropdown.classList.remove('show');
+            }
+            
+            for (var i = 0; i < navbarTogglers.length; i++) {
+                navbarTogglers[i].addEventListener('click', hideNavbarSections);
+            }
+        });
     </script>
+    <!--Borrar localstorage con logout -->
+    
     {%block script%}
 
     {%endblock%}

@@ -5,3 +5,7 @@
 /static/package-lock.json
 /static/package.json
 /usuarios/__pycache__
+/blog/variables.py
+/static/ckeditor/
+db.sqlite3
+AppBlog/migrations/

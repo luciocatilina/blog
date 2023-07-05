@@ -1,9 +1,12 @@
 {%extends 'base.html' %}
+{%load static%}
 
 {%block titulo%}
 <title>EmprendeForo | Inicio</title>
 <meta name="description"
     content="Conecta con otros emprendedores y empieza tu negocio. Encuentra socios, recursos y oportunidades de colaboración.">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 {%endblock%}
 
 {%block main%}
@@ -18,22 +21,19 @@
 <section>
     <h2 class="titulo_seccion_ultimas_pub">Últimas publicaciones</h2>
     <div class="grid_container">
-        <div class="publicacion_container">
-            {%for publicacion in object_list%}
-            <div class="publicacion">
-                <div class="info">
-                    <h4>{{publicacion.nombre}}</h4>
-                    <h5>{{publicacion.usuario}}</h5>
-                    <h5>{{publicacion.fecha_creacion|date:"d M, Y"}}</h5>
-                </div>
-                <div class="div_boton">
-                    <form action="{%url 'crear_comentario' publicacion.pk%}">
-                        <button class="boton">Ver publicación</button>
-                    </form>
-                </div>
-            </div>
-            {%endfor%}
+        <div class="publicacion_container" id='publicacion_container'>
+            
+
         </div>
     </div>
 </section>
+
+{%endblock%}
+
+{%block script%}
+    <script src="{%static 'js/tildar_botones_fav.js'%}"></script>
+    <script src="{%static 'js/favoritos.js'%}"></script>
+    <script src="{%static 'js/envio_fav.js'%}"></script>
+    <script src="{%static 'js/index.js'%}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 {%endblock%}

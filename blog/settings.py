@@ -42,13 +42,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #terceros
+    'rest_framework',
+    #'ckeditor',
+
     #mis apps
     'AppBlog',
     'usuarios',
+    'blogapi',
+    'favoritos',
+    'contacto',
     'donaciones',
 
     #terceros
     'sslserver',
+
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -140,13 +150,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+#STATIC_ROOT = os.path.join(BASE_DIR, "static/") #desarrollo
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] #produccion
 STATIC_URL = "/static/"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-
-
-LOGIN_URL = '/emprendeforo/iniciar_sesion'
+LOGIN_URL = '/iniciar_sesion'
 
 LOGOUT_REDIRECT_URL= 'inicio'
 
@@ -156,10 +169,43 @@ LOGOUT_REDIRECT_URL= 'inicio'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+#ckeditor
+
+'''
+CKEDITOR_JQUERY_URL= '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_CONFIGS = {
+    'default': {
+            'removePlugins' : 'exportpdf'
+        }
+    }
+'''
+
+'''
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': (
+            ['div', 'Source', '-', 'Save', 'NewPage', 'Preview', '-', 'Templates'],
+            ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord','-', 'Print', 'SpellChecker', 'Scayt'],
+            ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+            ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea','Select', 'Button','ImageButton', 'HiddenField'],
+            ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent','Indent','Blockquote'],
+            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+            ['Link', 'Unlink','Anchor'],
+            ['Image', 'Update', 'Flash', 'Table', 'HorizontalRule','Smiley', 'SpecialChar', 'PageBreak'],
+            ['Styles', 'Format', 'Font', 'FontSize'],
+            ['TextColor', 'BGColor'],
+            ['Maximize', 'ShowBlocks', '-', 'About', 'pbckcode'],
+            ),
+        }
+    }
+'''
+
+#mail
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_USE_TLS=True
 EMAIL_PORT=587
 EMAIL_HOST_USER= mail('mail')
 EMAIL_HOST_PASSWORD= mail('password')
-
