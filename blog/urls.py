@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('blogapi.urls')),
     path('', include('favoritos.urls')),
     path('', include('contacto.urls')),
+    path('', include('donaciones.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -1,22 +1,41 @@
 {%extends 'base.html'%}
-
+{%load static%}
 {%block titulo%}
     <title>EmprendeForo | Donaciones</title>
 {%endblock%}
+
+{%block main%}
 <h1>Donaciones</h1>
 
-<div id="wallet_container">comprar</div>
-{%block script%}
-    <!--SDK MercadoPago.js--> 
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
-    <script>
-        const mp = new MercadoPago('YOUR_PUBLIC_KEY');
-        const bricksBuilder = mp.bricks();
-        mp.bricks().create("wallet", "wallet_container", {
-        initialization: {
-            preferenceId: "<PREFERENCE_ID>",
-            },
-        });
-    </script>
+<div class="grid_container">
+    <div class="grid_item" id = 'donaciones_container'>
+        <div class="container_flex_donaciones">
+            <div class="donacion_item" id="donacion_100" value=100>$100 ARS</div>
+            <div class="donacion_item" id="donacion_500" value=500>$500 ARS</div>
+            <div class="donacion_item" id="donacion_1000" value=1000>$1000 ARS</div>
+            <div class="donacion_item" id="donacion_5000" value=5000>$5000 ARS</div>
+        </div>
+        <!--
+        <div class="donacion_custom">
+            <p>O realiza una donación personalizada</p>
+            <form class="div_donacion_custom">
+                <p>ARS</p>
+                <input type="number" id='donacion_custom'>
+                <button type="submit" class="btn_donacion">OK</button>
+            </form>
+            
+        </div>
+        -->
+    </div>
     
+</div>
+
+    
+
+
+{%endblock%}
+
+{%block script%}
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="{%static 'js/checkout.js'%}"></script>
 {%endblock%}

@@ -29,6 +29,9 @@
         <div class="navbar-users-help">
             <ul>
                 <li>
+                    <a class="nav-link nav_boton" href="{%url 'donaciones'%}">Donaciones</a>
+                </li>
+                <li>
                     <a class="nav-link nav_boton" href="{%url 'ayuda'%}">Ayuda</a>
                 </li>
                 {%if request.user.is_authenticated %}
@@ -129,6 +132,9 @@
                         </li>
                         <li class="nav-item justify-content-center ul-users">
                             <a class="nav-link nav_boton" href="{%url 'ayuda'%}">Ayuda</a>
+                        </li>
+                        <li class="nav-item justify-content-center ul-users">
+                            <a class="nav-link nav_boton" href="{%url 'donaciones'%}">Donaciones</a>
                         </li>
                     </ul>
                     

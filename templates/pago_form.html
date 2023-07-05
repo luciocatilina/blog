@@ -1,0 +1,23 @@
+
+        <div class="checkout">
+
+            {%for item in preference.items%}
+                <div class="checkout__description">
+                    <b>Descripción: </b>
+                    <p>{{ item.title }}</p>
+                </div>
+                <div class="checkout__price">
+                    <b>Total: </b>
+                    <div class="checkout__price__currency">
+                        <p>{{ item.currency_id }} {{ item.unit_price }}</p>
+                    </div>
+                    
+                </div>
+                <div id="preferencia" data-value={{preference.id}}></div>  
+                
+                {%endfor%}
+
+                <div id="wallet_container"></div>
+
+
+</div>
