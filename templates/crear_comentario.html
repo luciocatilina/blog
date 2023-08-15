@@ -34,10 +34,17 @@
             <div class="respuestas">
                 <h2>Comentarios:</h2>
                 <div class="form_crear txt-area">
-                    <form action="" method="POST"> {% csrf_token %}
-                        {{form.as_p}}
-                        
-                        <button type="submit" class="boton">Responder</button>
+                        {%if user.is_authenticated %}
+                        <form action="" method="POST" id="form_crear_comentario"> {% csrf_token %}
+                            {{form.as_p}}
+                            <button type="submit" class="boton">Responder</button>
+                        </form>
+                        {%else%}
+                        <form action="/iniciar_sesion" method="" id="form_crear_comentario">
+                            {{form.as_p}}
+                            <button type="submit" class="boton">Responder</button>
+                        </form>
+                        {%endif%}
                     </form>
                 </div>
                 {%if not comentarios%}
@@ -58,4 +65,8 @@
 {%endfor%}
     </div>  
 </section>
+{%endblock%}
+{%block script%}
+    
+    <script src="{%static 'js/crear_comentario.js'%}"></script>
 {%endblock%}

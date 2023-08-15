@@ -160,6 +160,13 @@ footer {
     grid-template-columns: 50% 50%;
     grid-template-areas: 'titulo titulo' 'user   fecha' 'coment coment' 'btn    btn'; } }
 
+.flex_column {
+  grid-area: pub;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
 /*components*/
 .boton {
   padding: 5px;
@@ -619,6 +626,15 @@ footer {
 .container_flex_donaciones {
   display: flex;
   flex-wrap: wrap; }
+
+.texto_donaciones {
+  width: 100%;
+  padding: 5px;
+  text-align: center; }
+
+@media screen and (min-width: 1023px) {
+  .texto_donaciones {
+    font-size: 1.3rem; } }
 
 .donacion_item {
   width: 40%;
