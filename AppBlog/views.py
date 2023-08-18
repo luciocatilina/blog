@@ -62,7 +62,7 @@ def inicio(request):
 
 ############################################
 ################## CREAR PUBLICACION #######
-class Crear_publicacion(LoginRequiredMixin, CreateView):
+class Crear_publicacion(CreateView):
 
     model = Publicacion
     success_url = reverse_lazy('inicio')
