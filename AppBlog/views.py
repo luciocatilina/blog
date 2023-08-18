@@ -81,7 +81,7 @@ class Crear_publicacion(CreateView):
 ############################################
 ################## PUBLICACION DETALLE #####
 
-class Crear_comentario(LoginRequiredMixin, CreateView):
+class Crear_comentario(CreateView):
 
     model = Comentario
     fields = ['texto']
