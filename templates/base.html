@@ -101,7 +101,7 @@
                                 e.preventDefault()
                                 localStorage.clear();
                                 destildarBotonesFav();
-                                location.href = '/cerrar_sesion'
+                                location.href = window.location.hostname + '/cerrar_sesion'
                             })
                         </script>
                         {% else %}

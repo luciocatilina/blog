@@ -33,13 +33,21 @@
             </div>
             <div class="respuestas">
                 <h2>Comentarios:</h2>
+                {%if user.is_authenticated %}
                 <div class="form_crear txt-area">
                     <form action="" method="POST"> {% csrf_token %}
                         {{form.as_p}}
-                        
                         <button type="submit" class="boton">Responder</button>
                     </form>
                 </div>
+                {%else%}
+                <div class="form_crear txt-area">
+                    <form action="{%url 'login'%}" method="">
+                        {{form.as_p}}
+                        <button type="submit" class="boton">Responder</button>
+                    </form>
+                </div>
+                {%endif%}
                 {%if not comentarios%}
                 <p>No hay comentarios todavía...</p>
                 {%else%}

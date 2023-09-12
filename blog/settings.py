@@ -43,13 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #terceros
-    'rest_framework',
+    #'rest_framework',
     #'ckeditor',
 
     #mis apps
     'AppBlog',
     'usuarios',
-    'blogapi',
+    #'blogapi',
     'favoritos',
     'contacto',
     'donaciones',
@@ -98,14 +98,14 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-"""
+'''
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
@@ -116,7 +116,7 @@ DATABASES = {
 		'PORT': '3306',
 	}
 }
-"""
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
