@@ -18,11 +18,11 @@
                 <button type="submit" class="boton" id="btn_crear_pub">Crear</button>
             </form>
             {%else%}
-            <form action="{%url 'login'%}" method="" id="form_crear_publicacion">
+            <form action="{%url 'login'%}" method=""">
                 {{form.media}}
                 {{form.as_p}}
 
-                <button type="submit" class="boton" id="btn_crear_pub">Crear</button>
+                <button type="submit" class="boton">Crear</button>
             </form>
             {%endif%}
         </div>
