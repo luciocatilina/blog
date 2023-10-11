@@ -10,12 +10,21 @@
 <section>
     <div class="grid_container">
         <div class="form_crear">
+            {%if user.is_authenticated %}
             <form action="" method="POST" id="form_crear_publicacion"> {% csrf_token %}
                 {{form.media}}
                 {{form.as_p}}
 
                 <button type="submit" class="boton" id="btn_crear_pub">Crear</button>
             </form>
+            {%else%}
+            <form action="{%url 'login'%}" method="" id="form_crear_publicacion">
+                {{form.media}}
+                {{form.as_p}}
+
+                <button type="submit" class="boton" id="btn_crear_pub">Crear</button>
+            </form>
+            {%endif%}
         </div>
     </div>
 </section>
